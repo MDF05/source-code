@@ -1,0 +1,31 @@
+<!-- @format -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./gabut.css" />
+
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="text" value="ilmu padi abangku" disabled />
+        <button>copy image</button>
+
+        <script>
+            const input = document.querySelector("input")
+            const button = document.querySelector("button")
+
+            button.addEventListener("click", async () => {
+                navigator.clipboard.writeText(input.value).then(
+                    (succes) => alert("berhasil menyalin teks"),
+                    (error) => alert("gagal menyalin teks"),
+                )
+            })
+        </script>
+    </body>
+</html>

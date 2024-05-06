@@ -1,0 +1,40 @@
+<!-- @format -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./gabut.css" />
+
+        <title>Document</title>
+    </head>
+
+    <body>
+        <img src="./images.png" />
+        <button>copy image</button>
+
+        <script>
+            const img = document.querySelector("img")
+            const button = document.querySelector("button")
+
+            fetch(img.src)
+                .then((image) => image.blob())
+                .then((image) => {
+                    const imageItem = new ClipboardItem({
+                        "image/png": image,
+                    })
+
+                    button.addEventListener("click", () => {
+                        navigator.clipboard.write([imageItem]).then(
+                            (succes) =>
+                                alert("berhasil menyalin gambar"),
+                            (gagal) => alert("gagal menyalin gambar"),
+                        )
+                    })
+                })
+        </script>
+    </body>
+</html>

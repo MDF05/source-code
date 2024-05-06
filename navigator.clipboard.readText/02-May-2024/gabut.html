@@ -1,0 +1,34 @@
+<!-- @format -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./gabut.css" />
+
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="text" value="" disabled />
+        <button>paste text</button>
+
+        <script>
+            const input = document.querySelector("input")
+            const button = document.querySelector("button")
+
+            button.addEventListener("click", async () => {
+                navigator.clipboard.readText(input.value).then(
+                    (succes) => {
+                        if (succes.length != 0) input.value = succes
+                        else alert("clipboard kosong")
+                    },
+                    (error) => alert("izin tidak diberikan"),
+                )
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!-- @format -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./gabut.css" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./images.png" alt="paste image disini" />
+    <button>paste image</button>
+
+    <script>
+        const img = document.querySelector("img")
+        const button = document.querySelector("button")
+
+        button.addEventListener("click", async() => {
+            const dataClip = await navigator.clipboard.read()
+            if (dataClip[0].types.includes("image/png")) {
+                const dataImage = await dataClip[0].getType(
+                    "image/png",
+                )
+                const urlImage = URL.createObjectURL(dataImage)
+                img.src = urlImage
+            } else {
+                alert("tidak ada gambar di clipboard")
+            }
+        })
+    </script>
+</body>
+
+</html>
